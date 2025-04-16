@@ -54,7 +54,6 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       }
   
       const tokens = generateJwtTokens(user);
-      console.log(user,tokens)
    
   
       res.status(200).json({ user, tokens });
