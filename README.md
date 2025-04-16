@@ -57,7 +57,7 @@ src/
 │   ├── jwt.ts
 │   └── hash.ts
 ├── schema/
-│   └── auth.schema.ts (Zod)
+│   └── auth.schema.ts 
 ├── prisma/
 │   └── client.ts
 ├── config/
