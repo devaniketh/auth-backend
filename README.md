@@ -10,7 +10,7 @@ src/
 ├── services/
 │   └── auth.service.ts
 ├── middleware/
-│   ├── auth.middleware.ts
+│   ├── rateLimiter.ts
 │   └── validate.ts
 ├── utils/
 │   ├── jwt.ts
