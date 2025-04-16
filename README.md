@@ -22,3 +22,5 @@ src/
 ├── config/
 │   └── env.ts
 └── types/
+│
+└── server.ts
