@@ -1,3 +1,44 @@
+# 🔐 Auth Backend API
+
+A fully functional backend-only authentication system built with:
+
+-  **Express.js**
+-  **Prisma + PostgreSQL**
+-  **Zod** for schema validation
+-  **JWT** based auth (access + refresh tokens)
+-  **Rate limiting**
+-  **Bcrypt** password hashing
+
+---
+
+##  Tech Stack
+
+- Node.js + Express
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- Zod
+- JWT
+- Bcrypt
+- express-rate-limit
+- ts-node-dev
+
+---
+
+
+
+###  Auth Routes
+
+| Method | Endpoint         | Description              |
+|--------|------------------|--------------------------|
+| POST   | `/register`      | Register a new user      |
+| POST   | `/login`         | Login and get tokens     |
+
+---
+
+
+
+
 ## Folder Structure
 
 ```text
@@ -10,15 +51,17 @@ src/
 ├── services/
 │   └── auth.service.ts
 ├── middleware/
-│   ├── auth.middleware.ts
+│   ├── rateLimiter.ts
 │   └── validate.ts
 ├── utils/
 │   ├── jwt.ts
 │   └── hash.ts
 ├── schema/
-│   └── auth.schema.ts (Zod)
+│   └── auth.schema.ts 
 ├── prisma/
 │   └── client.ts
 ├── config/
 │   └── env.ts
 └── types/
+│
+└── server.ts
