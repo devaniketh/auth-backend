@@ -4,7 +4,7 @@ import { hashPassword } from "../utils/hash";
 import { generateJwtTokens } from "../utils/jwt";
 import { comparePassword } from "../utils/hash";
 
-export const registerUser = async (req: Request, res: Response) : Promise<void> => {
+export const registerUser = async (req: Request, res: Response): Promise<void> => {
   const { email, password, name } = req.body;
 
   try {
@@ -13,7 +13,7 @@ export const registerUser = async (req: Request, res: Response) : Promise<void> 
     });
 
     if (existingUser) {
-       res.status(400).json({ message: "User already exists" });
+      res.status(400).json({ message: "User already exists" });
     }
 
     const hashedPassword = await hashPassword(password);
@@ -33,31 +33,32 @@ export const registerUser = async (req: Request, res: Response) : Promise<void> 
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
-    const { email, password } = req.body;
-  
-    try {
-      const user = await prisma.user.findUnique({
-        where: { email },
-      });
-  
-      if (!user) {
-        res.status(400).json({ message: "Invalid email or password" });
-        return;
-      }
-  
-      const isMatch = await comparePassword(password, user.password);
-  
-      if (!isMatch) {
-        res.status(400).json({ message: "Invalid email or password" });
-        return;
-      }
-  
-      const tokens = generateJwtTokens(user);
-   
-  
-      res.status(200).json({ user, tokens });
-    } catch (err) {
-      res.status(500).json({ message: "Something went wrong" });
+  const { email, password } = req.body;
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      res.status(400).json({ message: "Invalid email or password" });
+      return;
     }
-  };
+
+    const isMatch = await comparePassword(password, user.password);
+
+    if (!isMatch) {
+      res.status(400).json({ message: "Invalid email or password" });
+      return;
+    }
+
+    const tokens = generateJwtTokens(user);
+
+
+    res.status(200).json({ user, tokens });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
